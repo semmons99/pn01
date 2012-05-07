@@ -1,5 +1,7 @@
 source :rubygems
 
+gem "nori"
+
 group :test do
   gem "rspec"
   gem "guard"
