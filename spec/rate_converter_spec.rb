@@ -19,8 +19,7 @@ describe Register::RateConverter do
 
   describe "#convert" do
     it "converts a transaction" do
-      trans = {"amount" => BigDecimal("20.00"), "currency" => "AUD"}
-      amt   = subject.convert(trans, "CAD")
+      amt = subject.convert(BigDecimal("20.00"), "AUD", "CAD")
 
       amt.should eq(20.16)
     end

@@ -17,9 +17,9 @@ class Register
       rate.amt * rate_for(rate.to, to, path << rate)
     end
 
-    def convert(trans, to)
-      rate   = rate_for(trans["currency"], to)
-      (trans["amount"] * rate).round(2, BigDecimal::ROUND_HALF_EVEN)
+    def convert(amount, from, to)
+      rate = rate_for(from, to)
+      (amount * rate).round(2, BigDecimal::ROUND_HALF_EVEN)
     end
 
     private
