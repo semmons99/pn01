@@ -10,7 +10,10 @@ class Register
   def total_for(sku, currency)
     @trans
       .find_by_sku(sku)
-      .map{|t| @rates.convert(t["amount"], t["currency"], currency)}
+      .map do |t|
+        amount, from, to = t["amount"], t["currency"], currency
+        @rates.convert(amount, from, to)
+      end
       .inject(&:+)
   end
 end
